@@ -1,0 +1,2 @@
+# solah
+standard
