@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solah Singhar Salon - Faisalabad</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f0f0f;
+            color: #fff;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        nav h1 {
+            color: #ff4d6d;
+            font-size: 30px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d6d;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            color: #fff;
+        }
+
+        .hero p {
+            margin: 15px 0;
+            font-size: 23px;
+            color: #ddd;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #ff4d6d;
+            padding: 15px 30px;
+            color: white;
+            margin: 10px;
+            cursor: pointer;
+            border: 2px solid #ff4d6d;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #e63e5c;
+        }
+
+        .btn-outline {
+            border: 2px solid #fff;
+            background: transparent;
+            color: #fff;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 10%;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 90vh;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 25px;
+        }
+
+        .about h2 {
+            color: #ff4d6d;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .about ul {
+            margin-top: 15px;
+        }
+
+        .about ul li {
+            margin: 8px 0;
+            color: #ccc;
+            list-style: none;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: #222;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            color: #ff4d6d;
+        }
+
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .stars {
+            color: #ffcc00;
+            margin: 5px 0;
+        }
+
+        /* CONTACT */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 18px;
+            margin: 7px 0;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+            border-radius: 18px;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #000;
+            color: #aaa;
+        }
+
+        /* FLOAT WHATSAPP */
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: #fff;
+            padding: 10px 17px;
+            border-radius: 50%;
+            font-size: 29px;
+            z-index: 1000;
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+
+        @media(max-width:768px) {
+
+            .about,
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 10px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <h1>Solah Singhar</h1>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Glow Like Never Before</h1>
+            <p>Premium beauty & salon services in Faisalabad. Book your transformation today.</p>
+            <button class="btn btn-primary" onclick="scrollToSection('contact')">Book Now</button>
+            <button class="btn btn-outline" onclick="scrollToSection('services')">View Services</button>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388" />
+        <div>
+            <h2>About Solah Singhar</h2>
+            <p>We are a premium salon in Faisalabad offering professional beauty, skincare, and bridal services with
+                expert stylists.</p>
+
+            <ul>
+                <li>✔ Experienced Professionals</li>
+                <li>✔ Premium Quality Products</li>
+                <li>✔ Hygienic Environment</li>
+                <li>✔ Affordable Luxury</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" style="background: white; padding-bottom:30px;">
+        <h2 style="text-align:center;color:#ff4d6d;margin-bottom:30px;">Our Services</h2>
+        <div class="services-grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1">
+                <h3>Hair Styling</h3>
+                <p>Modern cuts & styling for all occasions.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e">
+                <h3>Facial Treatment</h3>
+                <p>Glow-boosting skincare treatments.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1526045478516-99145907023c">
+                <h3>Bridal Makeup</h3>
+                <p>Perfect bridal look for your big day.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+                <h3>Manicure</h3>
+                <p>Professional nail care services.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6">
+                <h3>Hair Coloring</h3>
+                <p>Premium hair coloring & highlights.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388">
+                <h3>Waxing</h3>
+                <p>Gentle and hygienic waxing services.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" style="background: #c59f5967; padding-bottom:30px;">
+        <h2 style="text-align:center;color:#ff4d6d;margin-bottom:30px;">Gallery</h2>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1526045478516-99145907023c" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388" onclick="openLightbox(this)">
+            
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" style="background: white; padding-bottom:30px; height: 80vh;">
+        <h2 style="text-align:center;color:#ff4d6d;margin-bottom:30px;">What Clients Say</h2>
+        <div class="testimonials">
+
+            <div class="testimonial">
+                <p>"Amazing service! Best salon in Faisalabad."</p>
+                <div class="stars">★★★★★</div>
+                <h4>- Ayesha</h4>
+            </div>
+
+            <div class="testimonial">
+                <p>"Very professional staff and clean environment."</p>
+                <div class="stars">★★★★★</div>
+                <h4>- Sara</h4>
+            </div>
+
+            <div class="testimonial">
+                <p>"Loved my bridal makeup, highly recommended."</p>
+                <div class="stars">★★★★★</div>
+                <h4>- Hina</h4>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div>
+            <h2 style="color:#ff4d6d; display: flex; align-items: center; justify-content: center; padding-bottom: 30px;">
+                <i class="fas fa-calendar-alt" style="margin-right: 10px;"></i> Book Appointment
+            </h2>
+
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="text" placeholder="Phone Number" required>
+
+                <select>
+                    <option>Select Service</option>
+                    <option>Hair Styling</option>
+                    <option>Facial</option>
+                    <option>Bridal Makeup</option>
+                    <option>Waxing</option>
+                </select>
+
+                <textarea placeholder="Message"></textarea>
+                <button class="btn btn-primary" type="submit">Send Request</button>
+            </form>
+
+            <p style="margin-top:15px;color:#ccc; display: flex; flex-direction: column; gap: 10px; ">
+                📍 Faisalabad, Pakistan <br>
+                📞 +92 300 0000000 <br>
+                🕒 10AM - 10PM
+            </p>
+        </div>
+
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18..." allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Solah Singhar Salon | All Rights Reserved</p>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a class="whatsapp" href="https://wa.me/923000000000" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img">
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openLightbox(img) {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = img.src;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
